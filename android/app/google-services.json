@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "786464975638",
+    "project_id": "inuny-25c9c",
+    "storage_bucket": "inuny-25c9c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:786464975638:android:a1eae0e5b06ca2a1383e37",
+        "android_client_info": {
+          "package_name": "com.example.inuny"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "786464975638-psdp95hsn1pnp6ev6g1br6naajom1ebq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwMsYIv7JeQuOe1VuACmrZRyHLDx1zVu4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "786464975638-psdp95hsn1pnp6ev6g1br6naajom1ebq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
