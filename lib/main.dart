@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:inuny/screens/Chat_screen.dart';
 import 'package:inuny/screens/Signup_screen.dart';
-import 'package:inuny/screens/home_page.dart';
 import 'package:inuny/screens/login_screen.dart';
 import 'package:stream_chat_flutter/stream_chat_flutter.dart' as stream;
 import 'package:firebase_auth/firebase_auth.dart';

@@ -63,29 +63,25 @@ class _LoginPageState extends State<LoginPage> {
 
  
 
-  Widget _loginOrRegisterButton(){
-    return TextButton(onPressed: () {
-      setState(() {
-        isLogin = !isLogin;
-      });
-    }, child: Text(isLogin ? 'Registered': 'Login '));
-  }
 
  Widget _logInButton(){
-    return SizedBox(
-      height: 48,
-      width: 327,
-      child: ElevatedButton(
-        
-        onPressed: signInWithEmailAndPassword,
-       child: Text('Login'),
-       style: ElevatedButton.styleFrom(
-        backgroundColor: Color(0xff33c283),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8)
-        )
-        
-       ),),
+    return Padding(
+      padding: const EdgeInsets.only(left:24.0, right: 24),
+      child: SizedBox(
+        height: 48,
+        width: 327,
+        child: ElevatedButton(
+          
+          onPressed: signInWithEmailAndPassword,
+         child: Text('Login'),
+         style: ElevatedButton.styleFrom(
+          backgroundColor: Color(0xff33c283),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8)
+          )
+          
+         ),),
+      ),
     );
   }
 
@@ -99,6 +95,30 @@ class _LoginPageState extends State<LoginPage> {
       
     ),));
   }
+
+Widget _passwordfield(
+    String title,
+    TextEditingController controller,
+
+  ){
+    return TextField(
+      maxLines: 2,
+      controller: controller,
+      
+      decoration: InputDecoration(
+        prefixIcon: Icon(Icons.key,color: Color(0xff33c283),),
+        
+        
+        labelText: title,
+         labelStyle: TextStyle(
+
+          color: Colors.grey),
+          border: InputBorder.none,
+          
+      ),
+    );
+  }
+
 
 Widget _signupnavigation(){
   return TextButton(onPressed: () {
@@ -124,7 +144,7 @@ Widget _signupnavigation(){
         decoration: BoxDecoration(
          color: Color(0xffF3F3F3),
         ),
-        child: Column(
+        child: ListView(
           
         
           children: [
@@ -154,7 +174,7 @@ Widget _signupnavigation(){
                       color: Colors.grey,
                     ),
                     Padding(padding: EdgeInsets.only(left: 20.0),
-                    child: _entryfield('Password', _controllerPassword),
+                    child: _passwordfield('Password', _controllerPassword),
                     ),
 
                       ],
@@ -166,11 +186,16 @@ Widget _signupnavigation(){
               height: 42,
             ),
 
-            Text("Forgot your Password?", style: TextStyle(
-              fontWeight: FontWeight.w500,
-                   color: Color(0xff8C8C8C),
-                  fontSize: 15,
-            ),),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text("Forgot your Password?", style: TextStyle(
+                  fontWeight: FontWeight.w500,
+                       color: Color(0xff8C8C8C),
+                      fontSize: 15,
+                ),),
+              ],
+            ),
 
             SizedBox(
               height: 118,
