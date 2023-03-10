@@ -25,13 +25,13 @@ Future<void> main() async {
 
 
   runApp(
-   Montero(client: client,),
+   Inuny(client: client,),
   );
 }
 
 
-class Montero extends StatelessWidget {
-  const Montero({super.key, required this.client});
+class Inuny extends StatelessWidget {
+  const Inuny({super.key, required this.client});
 
   final StreamChatClient client;
 
@@ -45,23 +45,7 @@ class Montero extends StatelessWidget {
         
       },
       
-      home:  LoginPage(),
-    );
-  }
-}
-
-
-class Inuny extends StatefulWidget {
-  const Inuny({super.key});
-
-  @override
-  State<Inuny> createState() => _InunyState();
-}
-
-class _InunyState extends State<Inuny> {
-  @override
-  Widget build(BuildContext context) {
-    return  StreamBuilder(
+      home:   StreamBuilder(
       stream: Auth().authStateChanges,
       builder: (context, snapshot) {
 
@@ -71,12 +55,10 @@ class _InunyState extends State<Inuny> {
           return const LoginPage();
         }
       },
-      );
+      )
+    );
   }
 }
-
-
-
 
 
 
