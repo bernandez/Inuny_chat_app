@@ -19,7 +19,9 @@ import 'auth.dart';
 
 
 
-void main() {
+Future<void> main() async {
+   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   final client = StreamChatClient(streamKey);
 
   runApp(
@@ -53,127 +55,20 @@ class MyApp extends StatelessWidget {
           ),
         );
       },
-      home: const SelectUserScreen(),
+      home: StreamBuilder(
+      stream: Auth().authStateChanges,
+      builder: (context, snapshot) {
+
+        if (snapshot.hasData){
+          return  SelectUserScreen();
+        } else{
+          return LoginPage();
+        }
+      },
+      ),
     );
   }
 }
-
-
-
-// Future<void> main() async {
-//   WidgetsFlutterBinding.ensureInitialized();
-//   await Firebase.initializeApp();
- 
-//   final client = StreamChatClient(
-//     streamKey,
-//     logLevel: Level.INFO,
-//   );
-
-
-//   runApp(
-//    Inuny(client: client,),
-//   );
-// }
-
-
-
-// class Inuny extends StatelessWidget {
-//   const Inuny({super.key, required this.client});
-
-//   final StreamChatClient client;
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       theme: ThemeData.dark(),
-//       builder: (context, child) {
-//         return StreamChatCore(
-//           client: client,
-//           child:child!);
-        
-//       },
-      
-//       home:   StreamBuilder(
-//       stream: Auth().authStateChanges,
-//       builder: (context, snapshot) {
-
-//         if (snapshot.hasData){
-//           return const HomeScreen();
-//         } else{
-//           return const HomeScreen();
-//         }
-//       },
-//       )
-//     );
-//   }
-// }
-
-
-// class ChannelPage extends StatelessWidget {
-//   const ChannelPage({
-//     Key? key,
-//   }) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: const stream.StreamChannelHeader(),
-//       body: Column(
-//         children: <Widget>[
-//           Expanded(
-//             child: stream.StreamMessageListView(
-//               messageBuilder: _messageBuilder,
-//             ),
-//           ),
-//           const stream.StreamMessageInput(),
-//         ],
-//       ),
-//     );
-//   }
-
-//   Widget _messageBuilder(
-//     BuildContext context,
-//     stream.MessageDetails details,
-//     List<stream.Message> messages,
-//     stream.StreamMessageWidget defaultMessageWidget,
-//   ) {
-//     final message = details.message;
-//     final isCurrentUser = stream.StreamChat.of(context).currentUser!.id == message.user!.id;
-//     final textAlign = isCurrentUser ? TextAlign.right : TextAlign.left;
-//     final color = isCurrentUser ? Colors.blueGrey : Colors.blue;
-
-//     return Padding(
-//       padding: const EdgeInsets.all(5),
-//       child: Container(
-//         decoration: BoxDecoration(
-//           color: Color(0xff33c283),
-//           border: Border.all(
-//             color: color,
-//           ),
-//           borderRadius: const BorderRadius.all(
-//             Radius.circular(15),
-//           ),
-//         ),
-//         child: ListTile(
-//           title: Text(
-//             message.text!,
-//             textAlign: textAlign,
-            
-//           ),
-//           subtitle: Text(
-            
-//             message.user!.name,
-//             textAlign: textAlign,
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }
-
-
-
-
 
 
 
