@@ -41,16 +41,17 @@ dependencies:
   logger: ^1.2.2
   faker: ^2.0.0
   cached_network_image: ^3.2.1
+  jiffy: ^4.1.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
  
-  stream_chat_flutter_core:
+  
   firebase_core:
   firebase_auth:
   logger:
-  stream_chat_flutter:
+  stream_chat_flutter_core: ^2.2.1
 
   
 
